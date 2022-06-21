@@ -11,5 +11,6 @@ import com.restaurant.server.models.Type;
 @Repository
 public interface dishRepo extends CrudRepository<Dish, Long> {
   List<Dish> findAll();
+  List<Dish> findAllByOrderByType();
   List<Dish> findAllByType(Type type);
 }

@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
+
 import org.mindrot.jbcrypt.BCrypt;
 
 import com.restaurant.server.models.Admin;
@@ -66,9 +67,9 @@ public class adminController {
   }
 
   // login
-  @GetMapping("/admin")
-  public HashMap<String, String> login(@RequestBody Admin admin) {
-    Admin login = adminService.login(admin.getUsername(), admin.getPassword());
+  @GetMapping("/admin/{username}/{password}")
+  public HashMap<String, String> login(@PathVariable String username, @PathVariable String password) {
+    Admin login = adminService.login(username, password);
     if (login == null) {
       HashMap<String, String> error = new HashMap<>();
       error.put("error", "Username and password do not match!");

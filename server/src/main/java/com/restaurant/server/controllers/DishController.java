@@ -50,6 +50,7 @@ public class DishController {
     HashMap<String, Object> map = new HashMap<>();
     map.put("dish", dish);
     map.put("type", dish.getType().getName());
+    map.put("typeId", dish.getType().getId());
     return map;
   }
 

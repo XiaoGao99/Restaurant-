@@ -21,7 +21,7 @@ public class DishService {
   typeRepo typeRepo;
 
   public List<Dish> getAll() {
-    return dishRepo.findAll();
+    return dishRepo.findAllByOrderByType();
   }
 
   public Dish getDishById(Long id) {
@@ -67,13 +67,14 @@ public class DishService {
       return null;
     } else {
       // since type id is passed by select menu, it always exists
-      Type type = typeRepo.findById(id).get();
+      Type type = typeRepo.findById(typeId).get();
       Dish theDish = dish.get();
       theDish.setName(name);
       theDish.setPrice(price);
       theDish.setDescription(description);
       theDish.setType(type);
       return dishRepo.save(theDish);
+      // return theDish;
     }
 
   }
